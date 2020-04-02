@@ -389,9 +389,9 @@ const renderTemplate = (container, template, place = `beforeEnd`) => {
 
 function renderTemplates(...templates) {
   templates.forEach((template) => {
-    const parentElem = document.querySelector(template.container);
+    const container = document.querySelector(template.container);
 
-    renderTemplate(parentElem, template.render(), template.place && template.place);
+    renderTemplate(container, template.render(), template.place && template.place);
   });
 }
 
