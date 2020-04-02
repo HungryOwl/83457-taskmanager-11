@@ -387,11 +387,11 @@ const renderTemplate = (container, template, place = `beforeEnd`) => {
   container.insertAdjacentHTML(place, template);
 };
 
-function renderTemplates(...templateObjs) {
-  templateObjs.forEach((templateObj) => {
-    const parentElem = document.querySelector(templateObj.selector);
+function renderTemplates(...templates) {
+  templates.forEach((template) => {
+    const parentElem = document.querySelector(template.container);
 
-    renderTemplate(parentElem, templateObj.template());
+    renderTemplate(parentElem, template.render(), template.place && template.place);
   });
 }
 
@@ -404,11 +404,11 @@ const renderTasks = (count) => {
 };
 
 renderTemplates(
-    {selector: `.main__control`, template: menuTemplate},
-    {selector: `.main`, template: filterTemplate},
-    {selector: `.main`, template: boardTemplate},
-    {selector: `.board__tasks`, template: taskEditTemplate},
-    {selector: `.board`, template: loadMoreButtonTemplate}
+    {container: `.main__control`, render: menuTemplate},
+    {container: `.main`, render: filterTemplate},
+    {container: `.main`, render: boardTemplate},
+    {container: `.board__tasks`, render: taskEditTemplate},
+    {container: `.board`, render: loadMoreButtonTemplate}
 );
 
 renderTasks(TASK_COUNT);
