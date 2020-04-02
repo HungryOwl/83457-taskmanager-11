@@ -387,13 +387,13 @@ const renderTemplate = (container, template, place = `beforeEnd`) => {
   container.insertAdjacentHTML(place, template);
 };
 
-function renderTemplates(...templates) {
+const renderTemplates = (...templates) => {
   templates.forEach((template) => {
     const container = document.querySelector(template.container);
 
     renderTemplate(container, template.render(), template.place && template.place);
   });
-}
+};
 
 const renderTasks = (count) => {
   const taskListElement = document.querySelector(`.board__tasks`);
