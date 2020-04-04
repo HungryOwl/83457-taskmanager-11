@@ -391,7 +391,7 @@ const renderTemplates = (...templates) => {
   templates.forEach((template) => {
     const container = document.querySelector(template.container);
 
-    renderTemplate(container, template.render(), template.place && template.place);
+    renderTemplate(container, template.render(), template.place);
   });
 };
 
