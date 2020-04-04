@@ -4,9 +4,9 @@ const TASK_COUNT = 3;
 const selectors = [`main`, `main__control`, `board`, `board__tasks`];
 const elem = {};
 
-const getHtmlElement = (selector) => {
-  return document.querySelector(`.${selector}`) || selector;
-};
+const getHtmlElement = (selector) => (
+  document.querySelector(`.${selector}`) || selector
+);
 
 const getMenuTemplate = () => (
   `
