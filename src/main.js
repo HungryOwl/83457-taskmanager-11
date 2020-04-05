@@ -14,6 +14,7 @@ const getHtmlElement = (className) => {
   if (!element) {
     throw new Error(`Элемент не найден`);
   }
+
   return element;
 };
 
