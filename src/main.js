@@ -1,5 +1,3 @@
-"use strict";
-
 const TASK_COUNT = 3;
 const elementClassNames = [`main`, `main__control`, `board`, `board__tasks`];
 const elem = {};
