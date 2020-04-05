@@ -23,12 +23,10 @@ const renderTemplate = (container, template, place = `beforeEnd`) => {
 
 const renderTemplates = (...templates) => {
   templates.forEach((template) => {
-    let {container} = template;
+    let {className} = template;
 
-    elem[container] = !elem[container] ? getHtmlElement(container) : elem[container];
-    container = elem[container];
-
-    renderTemplate(container, template.render(), template.place);
+    elem[className] = !elem[className] ? getHtmlElement(className) : elem[className];
+    renderTemplate(elem[className], template.render(), template.place);
   });
 };
 
@@ -39,11 +37,11 @@ const renderTasks = (count) => {
 };
 
 renderTemplates(
-    {container: `main__control`, render: getMenuTemplate},
-    {container: `main`, render: getFilterTemplate},
-    {container: `main`, render: getBoardTemplate},
-    {container: `board`, render: getLoadMoreButtonTemplate},
-    {container: `board__tasks`, render: getEditTaskTemplate}
+    {className: `main__control`, render: getMenuTemplate},
+    {className: `main`, render: getFilterTemplate},
+    {className: `main`, render: getBoardTemplate},
+    {className: `board`, render: getLoadMoreButtonTemplate},
+    {className: `board__tasks`, render: getEditTaskTemplate}
 );
 
 renderTasks(TASK_COUNT);
