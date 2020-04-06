@@ -1,9 +1,9 @@
 import {getMenuTemplate} from './components/menu';
 import {getFilterTemplate} from './components/filter';
 import {getTaskTemplate} from './components/task';
-import {getEditTaskTemplate} from './components/editTask';
+import {getEditTaskTemplate} from './components/edit-task';
 import {getBoardTemplate} from './components/board';
-import {getLoadMoreButtonTemplate} from './components/loadMoreButton';
+import {getLoadMoreButtonTemplate} from './components/load-more-button';
 
 const TASK_COUNT = 3;
 const elem = {};
