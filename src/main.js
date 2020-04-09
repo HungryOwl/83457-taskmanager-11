@@ -7,6 +7,8 @@ import {getLoadMoreButtonTemplate} from './components/load-more-button';
 
 const TASK_COUNT = 3;
 const elem = {};
+const mainClassNames = [`main`, `main__control`];
+const secondaryClassNames = [`board`, `board__tasks`];
 
 const getHtmlElement = (className) => {
   const element = document.querySelector(`.${className}`);
@@ -18,16 +20,20 @@ const getHtmlElement = (className) => {
   return element;
 };
 
+const getContainerClasses = (classNamesArr, obj) => {
+  return classNamesArr.forEach((className) => {
+    obj[className] = getHtmlElement(className);
+  });
+};
+
 const renderTemplate = (container, template, place = `beforeEnd`) => {
   container.insertAdjacentHTML(place, template);
 };
 
 const renderTemplates = (...templates) => {
   templates.forEach((template) => {
-    let {className} = template;
-
-    elem[className] = !elem[className] ? getHtmlElement(className) : elem[className];
-    renderTemplate(elem[className], template.render(), template.place);
+    let {container} = template;
+    renderTemplate(container, template.render(), template.place);
   });
 };
 
@@ -37,12 +43,19 @@ const renderTasks = (count) => {
   }
 };
 
+getContainerClasses(mainClassNames, elem);
 renderTemplates(
-    {className: `main__control`, render: getMenuTemplate},
-    {className: `main`, render: getFilterTemplate},
-    {className: `main`, render: getBoardTemplate},
-    {className: `board`, render: getLoadMoreButtonTemplate},
-    {className: `board__tasks`, render: getEditTaskTemplate}
+    {container: elem.main__control, render: getMenuTemplate},
+    {container: elem.main, render: getFilterTemplate},
+    {container: elem.main, render: getBoardTemplate}
+);
+
+
+getContainerClasses(secondaryClassNames, elem);
+renderTemplates(
+    {container: elem.board, render: getLoadMoreButtonTemplate},
+    {container: elem.board__tasks, render: getEditTaskTemplate}
 );
 
 renderTasks(TASK_COUNT);
+
